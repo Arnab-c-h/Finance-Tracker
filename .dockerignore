@@ -1,0 +1,15 @@
+node_modules
+.env
+.env.*
+.env.local
+dist
+build
+*.log
+npm-debug.log*
+.git
+.gitignore
+.vscode
+.idea
+README.md
+prisma.config.ts
+eslint.config.mjs
