@@ -39,18 +39,14 @@ if (process.env.NODE_ENV?.trim() === 'production') {
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
 
-app.get('/', (req, res) => {
-  res.redirect('/api/v1/health');
-});
-
 // Application routes
-app.get('/api/v1/health', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).json({ status: 'ok', uptime: process.uptime() });
 });
 
-app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/transactions', transactionRouter);
+app.use('/auth', authRouter);
+app.use('/users', userRouter);
+app.use('/transactions', transactionRouter);
 
 // Handle unhandled routes
 app.all('/{*path}', (req, res, next) => {
